@@ -19,6 +19,12 @@ html {
 }
 
 
+// Links:
+a:link, a:visited {
+	color: $text-link-color;
+	text-decoration: none;
+}
+
 // Icons:
 // - Makes SVG icons consume the same amount of space as a character.
 .icon > svg {
