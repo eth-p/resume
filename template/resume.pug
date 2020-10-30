@@ -1,0 +1,15 @@
+// Copyright (C) 2020 eth-p
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1")
+		title #{me.name == null ? "eth-p" : me.name}'s Résumé
+		
+		-// Add the page scripts and styles.
+		for link in links
+			|!{link}
+
+main
+	for section in sections
+		h2=section.name
+		div !{section}
