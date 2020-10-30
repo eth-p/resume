@@ -38,3 +38,13 @@
 		@error "Unknown layout mode: #{$mode}"
 	}
 }
+
+/**
+ * Forces a background color to be printed on Webkit-based browsers.
+ * Doesn't work for Firefox or MSIE, unfortunately.
+ */
+@mixin print-background() {
+	color-adjust: exact;
+	print-color-adjust: exact;
+	-webkit-print-color-adjust: exact;
+}

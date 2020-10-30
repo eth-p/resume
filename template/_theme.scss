@@ -3,12 +3,25 @@
 // All rights reserved. Not to be copied!
 // ---------------------------------------------------------------------------------------------------------------------
 
-$page-background: #f3f3f3;                     // The background color for the entire page.
+// Colors:
+$page-background:    #f3f3f3;                            // The background color for the entire page.
 
-$profile-background: #fff;                     // Background color for the profile section.
-$profile-border: #bbb;                         // Border color for the profile section. 
+$profile-background: #fff;                               // Background color for the profile section.
+$profile-border:     #bbb;                               // Border color for the profile section.
 
-$emphasis-font: 'Geneva', serif;
+$section-line:       #88b14b;
 
-$text-regular-color: rgba(0, 0, 0, 0.87);
-$text-light-color: rgba(0, 0, 0, 0.5);
+
+// Fonts:
+$emphasis-font: 'Geneva', serif;                         // Font for emphasizing something.
+$heading-font:  'Lucida Console', 'Monaco', monospace;   // Font for section headings.
+
+$text-regular-color: rgba(0, 0, 0, 0.87);                // Text color for regular text.
+$text-light-color: rgba(0, 0, 0, 0.5);                   // Text color for demphasized text.
+
+
+// Layout:
+$section-padding:           2rem;                        // The padding for each individual section.
+$section-padding-mobile:    1rem;                        // ^, but for mobile.
+
+

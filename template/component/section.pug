@@ -3,6 +3,9 @@
 mixin section(section, options)
 	- const classes = (attributes.class == null ? '' : attributes.class).split(' ');
 	div(id=section.id, class=(classes.includes('seamless') ? '' : 'section'))
-		if !classes.includes('seamless')
-			h1=section.name
-		|!{section.contents}
+		div.contents&attributes(attributes)
+			if !classes.includes('seamless')
+				h1
+					span=section.name
+			
+			|!{section.contents}

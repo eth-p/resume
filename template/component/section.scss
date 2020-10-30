@@ -2,7 +2,60 @@
 // eth-p/resume | Copyright (C) 2020 eth-p
 // All rights reserved. Not to be copied!
 // ---------------------------------------------------------------------------------------------------------------------
+@import "../util";
+@import "../theme";
 
+$section-heading-size:      1.15rem;  // Font size for section headings.
+$section-heading-margin:    0.75rem;  // Bottom margin for section headings.
+
+$paragraph-margin:          0.75em;   // Bottom margin for paragraphs.
+
+/**
+ * Section Component
+ *
+ * This component is used to display a section of information.
+ * It will be displayed in the multi-column layout underneath the profile.
+ */
 .section {
-	//asdf
+	box-sizing: border-box;
+	
+	.contents {
+		// Fancy padding and margin ratios to create a left border.
+		padding: ($section-padding * 0.2) ($section-padding / 2);
+		margin: ($section-padding * 0.8) ($section-padding / 2);
+		
+		border-left: $section-line 1px solid;
+		
+		@include layout("mobile") {
+			padding: ($section-padding-mobile * 0.2) ($section-padding-mobile);
+			margin: ($section-padding-mobile * 0.8) ($section-padding-mobile / 2);
+			margin-bottom: $section-padding-mobile * 1.5;
+			
+			border-left-width: 2px;
+		}
+		
+
+		
+		// Prevent paragraphs or other margin-bottom elements from making the section larger than necessary.
+		> *:last-child {
+			margin-bottom: 0;
+		}
+		
+	}
+	
+	// The section heading/title.
+	// This lets readers know what the section is about.
+	h1 {
+		font-family: $heading-font;
+		font-weight: 400;
+		font-size: $section-heading-size;
+		margin: 0 0 $section-heading-margin;
+	}
+	
+	// A paragraph inside a section.
+	p {
+		margin-top: 0;
+		margin-bottom: $paragraph-margin;
+	}
+	
 }

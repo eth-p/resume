@@ -12,6 +12,7 @@ html {
 	margin: 0;
 	padding: 0;
 	
+	font-size: 11pt;
 	font-family: 'Roboto', 'Helvetica Neue', 'arial', sans-serif;
 	color: $text-regular-color;
 	background: $page-background;
@@ -41,30 +42,33 @@ html {
 	margin: 0;  // This prevents the page from being given implicit margins.
 }
 
+
 // ---------------------------------------------------------------------------------------------------------------------
 // Resume layout:
+// ---------------------------------------------------------------------------------------------------------------------
+$page-bottom-margin-mobile: 5em;  // Margin at the bottom of the page for mobile layout.
 
 main {
 	column-count: 2;
+	margin-top: $section-padding / 2;
 	
 	@include layout("mobile") {
-		column-count: unset;  // Multi-column layouts are not great for mobile.
+		margin-top: $section-padding-mobile;
+		
+		column-count: unset;                         // Multi-column layouts are not great for mobile.
+		margin-bottom: $page-bottom-margin-mobile;   // No gap between content and the end of page is bad.
+	}
+	
+	> *:first-child > .contents {
+		margin-top: 0;
 	}
 	
 	// Control breaking to prevent sections from being broken up in the middle.
 	> * {
 		break-inside: avoid;
-		
-		p {
+
+		> p {
 			break-after: column;
 		}
-	}
-}
-
-.section {
-	padding: 1px;  // This corrects a layout issue with css columns.
-	
-	@include layout("mobile") {
-		display: block;
 	}
 }
