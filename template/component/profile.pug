@@ -1,0 +1,62 @@
+-// Copyright (C) 2020 eth-p
+include image
+
+mixin profile-detail(icon)
+		+image(icon)(title=attributes.alt, alt=attributes.alt).icon
+		span.value&attributes(Object.assign(attributes, {title: attributes.alt, alt:null}))
+			block
+
+mixin profile(info)
+	div.profile(vocab="http://schema.org/" typeof="Person")
+		div.contents
+			div.about
+				-// Profile Summary:
+				-// - Name
+				-// - Occupation Title
+				div.summary
+					div(property="name")=info.name
+					if info.occupation != null
+						div(property="occupation")=info.occupation.title
+				
+				-// Profile Details:
+				-// - Contact Info
+				-// - Personal Info
+				div.details
+					div.spacer
+					div.details-grid
+						
+						if info.phone != null
+							+profile-detail(assets.icon_phone)(alt='Phone')
+								a(property="phone" href=`tel:${info.phone.replace(/[^+\d]/g, '')}`)=info.phone
+		
+						if info.email != null
+							+profile-detail(assets.icon_email)(alt='Email')
+								a(property="email" href=`mailto:${info.email}`)=info.email
+	
+						if info.birthday != null
+							+profile-detail(assets.icon_birthday)(alt='Birthday')
+								span(property="birthDate")=info.birthday
+						
+						if info.address != null
+							+profile-detail(assets.icon_address, info.address)(alt='Address')
+								span(property="address")=info.address
+					div.spacer
+				//
+				//-// Profile Occupation info.
+				//if info.occupation != null
+				//	- const occupation = info.occupation
+				//	div.occupation
+				//		div(property="occupation")
+				//			| #{occupation.title}
+				//
+				//		if occupation.employer != null
+				//			div(property="employer")
+				//				| at #{occupation.employer}
+				//	
+				block
+
+			-// Profile Photo
+			div.spacer
+			if info.photo != null
+				img(property="image" alt=`${info.name}'s picture.` src=info.photo)
+

@@ -1,4 +1,41 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// eth-p/resume | Copyright (C) 2020 eth-p
+// All rights reserved. Not to be copied!
+// ---------------------------------------------------------------------------------------------------------------------
+@import "util";
+@import "theme";
 
-body {
-	background: green;
+body,
+html {
+	margin: 0;
+	padding: 0;
+	
+	font-family: 'Roboto', 'Helvetica Neue', 'arial', sans-serif;
+	color: $text-regular-color;
+
+	@include layout("print") {
+		//margin: 1in;
+	}
+}
+
+
+// Make SVG icons consume the same amount of space as a character.
+.icon > svg {
+	fill: currentColor;
+	height: 1em;
+}
+
+// Print layout.
+@include layout("print") {
+	
+	// Make links look like regular text on the print layout.
+	// You can't click them on paper, and they end up becoming a distraction.
+	a:link {
+		color: unset;
+		text-decoration: unset;
+	}
+}
+
+@page {
+	margin: 0;
 }

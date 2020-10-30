@@ -1,0 +1,40 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// eth-p/resume | Copyright (C) 2020 eth-p
+// All rights reserved. Not to be copied!
+// ---------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Applies styles only to a specific layout mode.
+ *
+ * @param $mode -- The layout mode.
+ *
+ * Supported:
+ *  - "print":   Printing & PDFs
+ *  - "mobile":  Mobile
+ *  - "desktop": Desktop
+ */
+@mixin layout($mode) {
+	$MOBILE_WIDTH: 550px;
+	
+	@if $mode == "print" {
+		@media print {
+			& {
+				@content
+			}
+		}
+	} @else if $mode == "desktop" {
+		@media screen and (min-width: $MOBILE_WIDTH) {
+			& {
+				@content
+			}
+		}
+	} @else if $mode == "mobile" {
+		@media screen and (max-width: $MOBILE_WIDTH - 1) {
+			& {
+				@content
+			}
+		}
+	} @else {
+		@error "Unknown layout mode: #{$mode}"
+	}
+}

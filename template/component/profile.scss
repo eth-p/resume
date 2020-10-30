@@ -1,0 +1,116 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// eth-p/resume | Copyright (C) 2020 eth-p
+// All rights reserved. Not to be copied!
+// ---------------------------------------------------------------------------------------------------------------------
+@import "../util";
+@import "../theme";
+
+$photo-border-radius: 100%;    // How circular the profile photo is.
+$photo-size:          6rem;    // The size of the profile photo.
+$photo-size-mobile:   11rem;   // ^, but on mobile.
+
+$profile-padding:               3rem;    // The padding around the entire profile.
+$profile-details-margin:        1rem;    // The margin between the profile summary and profile details.
+$profile-details-margin-mobile: 3.5rem;  // ^, but on mobile.
+
+$details-margins: calc(max(0.5rem, min(5vw, 2rem)));
+
+/**
+ * Profile Component
+ */
+.profile {
+	
+	// Style for the profile border and background.
+	background: $profile-background;
+	border-bottom: $profile-border 1px solid;
+	
+	// Layout.
+	.spacer {
+		flex: 1 0 auto;
+	}
+	
+	.contents {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		
+		box-sizing: border-box;
+
+		padding: $profile-padding;
+		
+		@include layout("mobile") {
+			flex-direction: column-reverse;
+			flex-wrap: nowrap;
+
+			padding: 4rem $profile-padding;
+		}
+		
+		// The section of the profile that tells you about the person.
+		// i.e. Everything except the photo.
+		> .about {
+			display: flex;
+			flex-direction: column;
+			
+			@include layout("mobile") {
+				text-align: center;
+				margin-top: $profile-details-margin;
+			}
+			
+			// The person's details grid.
+			// This displays contact info and some other common personal info.
+			> .details > .details-grid {
+				display: grid;
+				grid-template-columns: 1.5em 1fr 1.5em 1fr;
+				
+				align-items: center;
+				
+				margin-top: $profile-details-margin;
+				
+				@include layout("mobile") {
+					display: inline-grid; // To help center the entire grid.
+					
+					text-align: left;
+					grid-template-columns: 1.5em 1fr;
+					margin-top: $profile-details-margin-mobile;
+
+					:nth-child(2) {
+						padding-right: unset;
+					}
+				}
+
+				// Every second child is the text after an icon.
+				// This should be right-padded to emulate grid spacing.
+				:nth-child(2) {
+					padding-right: $details-margins;
+
+					@include layout("mobile") {
+						padding-right: 0;
+					}
+				}
+			}
+		}
+	}
+	
+	// Photo
+	[property="image"] {
+		width: $photo-size;
+		height: $photo-size;
+		border-radius: $photo-border-radius;
+		
+		border: $profile-border 1px solid;
+		
+		@include layout("mobile") {
+			width: $photo-size-mobile;
+			height: $photo-size-mobile;
+		}
+	}
+
+	// Name
+	[property="name"] {
+		font-size: 2rem;
+		font-weight: bold;
+	}
+
+	
+}
