@@ -1,0 +1,16 @@
+-// Copyright (C) 2020 eth-p
+
+mixin image(asset)
+	if asset === undefined
+		span
+			| #{attributes.alt}:&nbsp;
+	
+	else if typeof asset === 'string'
+		img(src=asset)&attributes(attributes)
+	
+	else
+		if asset.type === 'svg'
+			object(role="img" aria-label=attributes.alt)&attributes(attributes)
+				| !{asset.contents.toString()}
+		else
+			img(src=`data:image/${asset.type};base64,${asset.contents.toString('base64')}`)&attributes(attributes)
