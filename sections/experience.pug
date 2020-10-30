@@ -1,0 +1,36 @@
+---
+sort: 4
+icon: asset:icon_work
+name: Work Experience
+---
+-// Copyright (C) 2020 eth-p
+include ../template/component/image
+
+for experience in (me.experience == null ? [] : me.experience)
+	div.experience.paragraph
+
+		div
+			-// The job title.
+			if experience.title != null
+				span.title=experience.title
+				| &nbsp;
+			
+			-// Years spent at the company.
+			if experience.date != null
+				- const from = (typeof experience !== 'object') || experience.date.from || experience.date || null
+				- const to   = (typeof experience !== 'object') || experience.date.to   || null
+				
+				if from != null
+					span.date
+						span.date-from=from
+						if to != null
+							span.range &ndash;
+							span.date-to=to
+
+		-// Employer info.
+		if experience.employer != null
+			div.employer=experience.employer
+		
+		-// Additional info.
+		if experience.info != null
+			div.info=experience.info

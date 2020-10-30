@@ -1,0 +1,39 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// eth-p/resume | Copyright (C) 2020 eth-p
+// All rights reserved. Not to be copied!
+// ---------------------------------------------------------------------------------------------------------------------
+@import "../util";
+@import "../theme";
+
+$info-margin: 0.4em;   // Top margin for the info paragraph.
+
+
+/**
+ * Section: Experience
+ *
+ * This section displays work experience.
+ */
+.section .experience {
+	
+	// The job title.
+	.title {
+		font-family: $emphasis-font;
+		font-weight: bold;
+	}
+	
+	// The dates of employment.
+	.date {
+		color: $text-light-color;
+	}
+
+	// The employer name.
+	.employer {
+		font-style: italic;
+	}
+	
+	// Additional info about the job.
+	.info {
+		margin-top: $info-margin;
+	}
+	
+}
