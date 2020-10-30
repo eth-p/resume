@@ -1,5 +1,8 @@
 -// Copyright (C) 2020 eth-p
 
-mixin section(section)
-	div(id=section.id)
+mixin section(section, options)
+	- const classes = (attributes.class == null ? '' : attributes.class).split(' ');
+	div(id=section.id, class=(classes.includes('seamless') ? '' : 'section'))
+		if !classes.includes('seamless')
+			h1=section.name
 		|!{section.contents}

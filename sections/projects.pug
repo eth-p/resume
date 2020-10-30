@@ -1,0 +1,11 @@
+---
+sort: 10
+test: ing
+---
+-// Copyright (C) 2020 eth-p
+include ../template/component/image
+
+div.skills
+	for skill in me.skills
+		+image(assets[`icon_${skill.icon}`])
+		span=skill.name

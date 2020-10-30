@@ -5,6 +5,8 @@
 @import "util";
 @import "theme";
 
+// General page style:
+// - Removes implicit margin/padding, set default font.
 body,
 html {
 	margin: 0;
@@ -15,13 +17,16 @@ html {
 	background: $page-background;
 }
 
-// Make SVG icons consume the same amount of space as a character.
+
+// Icons:
+// - Makes SVG icons consume the same amount of space as a character.
 .icon > svg {
 	fill: currentColor;
 	height: 1em;
 }
 
-// Print layout.
+
+// Print layout:
 @include layout("print") {
 	
 	// Make links look like regular text on the print layout.
@@ -33,5 +38,33 @@ html {
 }
 
 @page {
-	margin: 0;
+	margin: 0;  // This prevents the page from being given implicit margins.
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Resume layout:
+
+main {
+	column-count: 2;
+	
+	@include layout("mobile") {
+		column-count: unset;  // Multi-column layouts are not great for mobile.
+	}
+	
+	// Control breaking to prevent sections from being broken up in the middle.
+	> * {
+		break-inside: avoid;
+		
+		p {
+			break-after: column;
+		}
+	}
+}
+
+.section {
+	padding: 1px;  // This corrects a layout issue with css columns.
+	
+	@include layout("mobile") {
+		display: block;
+	}
 }

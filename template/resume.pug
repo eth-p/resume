@@ -16,10 +16,10 @@ html
 	body
 		-// Any intro sections will be added as the header.
 		header
-			for section in sections.filter(section => section['section-type'] === 'intro')
-				+section.seamless(section)
+			for section in sections.filter(section => section.metadata['section-type'] === 'intro')
+				+section(section).seamless
 		
 		-// Remaining sections will be added as the main content.
 		main
-			for section in sections.filter(section => section['section-type'] !== 'intro')
+			for section in sections.filter(section => section.metadata['section-type'] !== 'intro')
 				+section(section)
