@@ -10,6 +10,7 @@ $photo-size:          6rem;                                           // Size of
 $photo-size-mobile:   11rem;                                          // ^, but on mobile.
 
 $profile-padding:               3rem;                                 // Padding around the entire profile.
+$profile-padding-print:         1.5rem;                               // ^, but for print.
 $profile-details-margin:        1rem;                                 // Margins between the profile summary and details.
 $profile-details-margin-mobile: 3.5rem;                               // ^, but on mobile.
 
@@ -51,6 +52,10 @@ $details-margins-vertical-mobile: 0.45rem;                            // ^, but 
 			flex-wrap: nowrap;
 
 			padding: 4rem $profile-padding;
+		}
+
+		@include layout("print") {
+			padding: $profile-padding-print;
 		}
 		
 		// The section of the profile that tells you about the person.

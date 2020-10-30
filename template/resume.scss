@@ -66,6 +66,10 @@ main {
 	
 	margin: ($section-padding / 2) 0;
 	
+	@include layout("print") {
+		margin: $section-padding-print 0 0;
+	}
+	
 	@include layout("mobile") {
 		margin-top: $section-padding-mobile;
 		

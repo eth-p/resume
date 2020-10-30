@@ -33,6 +33,12 @@ $paragraph-margin:          0.75em;   // Bottom margin for paragraphs.
 			
 			border-left-width: 2px;
 		}
+
+		@include layout("print") {
+			padding: ($section-padding-print * 0.2) ($section-padding-print / 2);
+			margin: ($section-padding-print * 0.8) ($section-padding-print / 2);
+			margin-bottom: $section-padding-print;
+		}
 		
 
 		
