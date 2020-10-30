@@ -13,7 +13,7 @@ address = 'Somewhere in Kanto'
 title = "A Beloved Pet"
 employer = "Ash Ketchum"
 
-[links.github]
+[links.pokedex]
 icon = "http://cdn.onlinewebfonts.com/svg/download_174253.svg"
 name = "Species"
 text = "Pikachu"
@@ -40,7 +40,42 @@ info   = "Trained under Ash Ketchum to become the best Pikachu around."
 # ----------------------------------------------------------------------------------------------------------------------
 # Skills
 # ----------------------------------------------------------------------------------------------------------------------
-[[skills]]
-icon = "web_design"
-name = "Web Design"
-points = ['HTML', 'CSS']
+[skill-categories]
+moves = "Moves"
+items = { name = "Items", minimized = true }
+
+[[skills.moves]]
+icon = "assets:misc_thunderbolt"
+name = "Thunderbolt"
+rating = 4.5
+points = ['Paralyzes']
+
+[[skills.moves]]
+icon = "assets:misc_unknown"
+name = "Tackle"
+rating = 2.3
+points = ['Cannot affect Ghost types.']
+
+[[skills.items]]
+name = "Potion"
+
+[[skills.items]]
+name = "Choice Specs"
+
+[[skills.items]]
+name = "Rare Candy"
+
+[[skills.items]]
+name = "Pokeball"
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Projects
+# ----------------------------------------------------------------------------------------------------------------------
+[[projects]]
+name = "Team Rocket Takedown"
+date = "1997"
+href = "https://en.wikipedia.org/wiki/Pikachu"
+tech = ["Bash"]
+info = "I took down Team Rocket yet again!"
+# tech-icon = false  # Don't try to use icons instead of tech names.
