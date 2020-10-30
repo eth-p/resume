@@ -50,6 +50,10 @@ $paragraph-margin:          0.75em;   // Bottom margin for paragraphs.
 		font-weight: 400;
 		font-size: $section-heading-size;
 		margin: 0 0 $section-heading-margin;
+		
+		.section-icon {
+			margin-right: 0.4rem;
+		}
 	}
 	
 	// A paragraph inside a section.

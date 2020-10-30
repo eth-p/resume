@@ -1,4 +1,5 @@
 -// Copyright (C) 2020 eth-p
+include image
 
 mixin section(section, options)
 	- const classes = (attributes.class == null ? '' : attributes.class).split(' ');
@@ -6,6 +7,9 @@ mixin section(section, options)
 		div.contents&attributes(attributes)
 			if !classes.includes('seamless')
 				h1
+					if section.metadata.icon != null
+						+image(section.metadata.icon).section-icon
+					
 					span=section.name
 			
 			|!{section.contents}

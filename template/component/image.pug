@@ -1,10 +1,13 @@
 -// Copyright (C) 2020 eth-p
 
+-// Adds an image or icon onto the page.
+-//
+-// @param asset - The image asset (from assets object), or URL.
 mixin image(asset)
 	- const data = (typeof asset === 'string' && asset.startsWith('asset:')) ? assets[asset.substring(6)] : asset;
 
 	if data == null
-		span(title=attributes.alt)
+		span(title=attributes.alt)&attributes(attributes)
 			| &#9888;
 	
 	else if typeof data === 'string'
