@@ -39,7 +39,7 @@ for project in me.projects
 			if project.tech != null && project['tech-hidden'] !== true
 				div.project-tech
 					for tech in project.tech
-						- const icon = `tech_${tech.toLowerCase().replace(/[^a-z0-9]{1,}/g, '_')}`
+						- const icon = `tech_${tech.toLowerCase().replace(/[^a-z0-9]/g, '_')}`
 									if project['tech-icon'] !== false && assets[icon] != null
 										+image(assets[icon])(alt=tech, title=tech).tech.icon
 									else

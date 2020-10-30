@@ -1,0 +1,94 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// eth-p/resume | Copyright (C) 2020 eth-p
+// All rights reserved. Not to be copied!
+// ---------------------------------------------------------------------------------------------------------------------
+@import "../util";
+@import "../theme";
+
+$rating-width:              calc(min(10rem, 20vw));     // Width of the rating bar.
+$rating-width-mobile:       calc(50vw - 2rem);            // ^, but for mobile.
+$rating-height:             calc(1ch - 2px);            // Height of the rating bar.
+
+$summary-margin:            0.2rem;   // Margin between each item in the summary line.
+
+$project-header-margin:  0.4rem;   // Bottom margin between link and info.
+$project-header-padding: 0.2rem;   // Padding for the project header.
+
+/**
+ * Section: Skills
+ *
+ * This section evaluates and displays your skills.
+ */
+.section .skills {
+	.skill {
+		
+		// The skill summary section.
+		// This section summarizes how proficient in a skill you are.
+		.skill-summary {
+			display: flex;
+			align-items: center;
+			
+			> .spacer {
+				flex: 1 0 auto;
+			}
+		}
+		
+		// The skill details section.
+		// This is a number of inline bullet points.
+		.skill-details {
+			color: $text-light-color;
+			font-size: 0.8rem;
+			
+			> *:not(:last-child)::after {
+				content: '\00a0\2022\00a0';
+			}
+		}
+		
+		// The skill icon.
+		.icon {
+			margin-right: $summary-margin;
+			width: 1.1rem;
+		}
+		
+		// The skill name.
+		.name {
+			font-family: $emphasis-font;
+			margin-right: $summary-margin;
+		}
+
+		// The skill rating.
+		.rating {
+			
+			// The progress bar showing how many stars out of 5 were self-assessed.
+			.rating-bar {
+				position: relative;
+				display: inline-block;
+
+				width: $rating-width;
+				height: $rating-height;
+				
+				margin-left: $summary-margin;
+				background: $rating-background !important;
+				border: $rating-border 1px solid !important;
+				
+				@include print-background;
+				@include layout("mobile") {
+					width: $rating-width-mobile;
+				}
+				
+				> .rating-bar-foreground {
+					position: absolute;
+					top: 0;
+					left: 0;
+					bottom: 0;
+					
+					background: $rating-foreground !important;
+					
+					@include print-background;
+				}
+			}
+			
+		}
+	}
+	
+}

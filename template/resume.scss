@@ -38,9 +38,9 @@ a:link, a:visited {
 	
 	// Make links look like regular text on the print layout.
 	// You can't click them on paper, and they end up becoming a distraction.
-	a:link {
-		color: unset;
-		text-decoration: unset;
+	a:link, a:visited {
+		color: inherit !important;
+		text-decoration: inherit !important;
 	}
 }
 
@@ -56,6 +56,8 @@ $page-bottom-margin-mobile: 5em;  // Margin at the bottom of the page for mobile
 
 main {
 	column-count: 2;
+	column-gap: 0;
+	
 	margin-top: $section-padding / 2;
 	
 	@include layout("mobile") {
@@ -76,5 +78,12 @@ main {
 		> p {
 			break-after: column;
 		}
+	}
+	
+	// A visualization of a spacer.
+	.spacer > .spacer-visualization {
+		margin: 0 1rem;
+		height: 1px;
+		background: $spacer-line;
 	}
 }

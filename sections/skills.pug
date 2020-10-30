@@ -1,12 +1,45 @@
 ---
 sort: 1
-test: ing
+icon: asset:icon_skills
 name: Skills
 ---
 -// Copyright (C) 2020 eth-p
 include ../template/component/image
 
 div.skills
-	for skill in me.skills
-		+image(assets[`icon_${skill.icon}`])
-		span=skill.name
+	for category in me.skills
+		for skill in category.sort((a, b) => (b.rating == null ? 0 : b.rating) - (a.rating == null ? 0 : a.rating))
+			div.skill
+				
+				-// A brief summary of the proficiency with the skill.
+				div.skill-summary
+				
+					-// The skill icon.
+					div.icon
+						+image(skill.icon)(alt=skill.name).icon
+					
+					-// The skill name.
+					div.name=skill.name
+
+					-// A spacer.
+					div.spacer
+						div.spacer-visualization
+					
+					-// The self-assessed rating of skill proficiency.
+					if skill.rating != null
+						div.rating
+							-// span=skill.rating
+							div.rating-bar
+								div.rating-bar-foreground(style=`width: ${skill.rating / 5 * 100}%`)
+
+				-// The following div is the skill details.
+				-// This section covers more in-depth descriptions indicators for where one's skill level is at.
+				div.skill-details
+					-// How long you've been doing the skill for.
+					if skill.since != null
+						span.since=`Since ${skill.since}`
+							
+					-// Any additional points to consider.
+					if skill.points != null
+						for point in skill.points
+							span.point=point
