@@ -14,7 +14,7 @@ title = "A Beloved Pet"
 employer = "Ash Ketchum"
 
 [links.pokedex]
-icon = "http://cdn.onlinewebfonts.com/svg/download_174253.svg"
+icon = "asset:tech_cmake"
 name = "Species"
 text = "Pikachu"
 href = "https://en.wikipedia.org/wiki/Pikachu"
@@ -38,6 +38,20 @@ info   = "Trained under Ash Ketchum to become the best Pikachu around."
 
 
 # ----------------------------------------------------------------------------------------------------------------------
+# Experience
+# ----------------------------------------------------------------------------------------------------------------------
+[[experience]]
+date     = 1997
+title    = "Saved The World"
+info     = "Saved the world from Team Rocket's evil deeds!"
+
+[[experience]]
+date     = 1998
+title    = "Saved The World... Again"
+info     = "Piiiiiiiika!"
+
+
+# ----------------------------------------------------------------------------------------------------------------------
 # Skills
 # ----------------------------------------------------------------------------------------------------------------------
 [skill-categories]
@@ -45,13 +59,13 @@ moves = "Moves"
 items = { name = "Items", minimized = true }
 
 [[skills.moves]]
-icon = "assets:misc_thunderbolt"
+icon = "asset:tech_gradle"
 name = "Thunderbolt"
 rating = 4.5
 points = ['Paralyzes']
 
 [[skills.moves]]
-icon = "assets:misc_unknown"
+icon = "asset:icon_user"
 name = "Tackle"
 rating = 2.3
 points = ['Cannot affect Ghost types.']
