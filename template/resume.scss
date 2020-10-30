@@ -27,9 +27,14 @@ a:link, a:visited {
 
 // Icons:
 // - Makes SVG icons consume the same amount of space as a character.
+.icon {
+	max-height: 100%;
+}
+
 .icon > svg {
 	fill: currentColor;
 	height: 1em;
+	max-height: 100%;
 	vertical-align: middle;
 }
 
