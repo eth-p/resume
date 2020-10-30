@@ -7,39 +7,52 @@ name: Skills
 include ../template/component/image
 
 div.skills
-	for category in me.skills
-		for skill in category.sort((a, b) => (b.rating == null ? 0 : b.rating) - (a.rating == null ? 0 : a.rating))
-			div.skill
-				
-				-// A brief summary of the proficiency with the skill.
-				div.skill-summary
-				
-					-// The skill icon.
-					div.icon
-						+image(skill.icon)(alt=skill.name).icon
-					
-					-// The skill name.
-					div.name=skill.name
-
-					-// A spacer.
-					div.spacer
-						div.spacer-visualization
-					
-					-// The self-assessed rating of skill proficiency.
-					if skill.rating != null
-						div.rating
-							-// span=skill.rating
-							div.rating-bar
-								div.rating-bar-foreground(style=`width: ${skill.rating / 5 * 100}%`)
-
-				-// The following div is the skill details.
-				-// This section covers more in-depth descriptions indicators for where one's skill level is at.
-				div.skill-details
-					-// How long you've been doing the skill for.
-					if skill.since != null
-						span.since=`Since ${skill.since}`
+	for entry in Object.entries(me.skills)
+		- const category      = entry[1];
+		- const category_name = entry[0];
+		- let   category_info = me['skill-categories']?.[category_name] || null
+		- if (typeof category_info === 'string') category_info = {name: category_info};
+		
+		- const minimized     = category_info?.minimized 
+		
+		div.paragraph
+			if category_info != null
+				h2=category_info.name
+			
+			div.skillset&attributes({class: (minimized === true ? 'minimized' : null)})
+				for skill in category.sort((a, b) => (b.rating == null ? 0 : b.rating) - (a.rating == null ? 0 : a.rating))
+					div.skill
+						
+						-// A brief summary of the proficiency with the skill.
+						div.skill-summary
+						
+							-// The skill icon.
+							div.icon
+								+image(skill.icon)(alt=skill.name).icon
 							
-					-// Any additional points to consider.
-					if skill.points != null
-						for point in skill.points
-							span.point=point
+							-// The skill name.
+							div.name=skill.name
+							
+							if skill.rating != null && minimized !== true
+								
+								-// A spacer.
+								div.spacer
+									div.spacer-visualization
+	
+								-// The self-assessed rating of skill proficiency.
+								div.rating
+									-// span=skill.rating
+									div.rating-bar
+										div.rating-bar-foreground(style=`width: ${skill.rating / 5 * 100}%`)
+		
+						-// The following div is the skill details.
+						-// This section covers more in-depth descriptions indicators for where one's skill level is at.
+						div.skill-details
+							-// How long you've been doing the skill for.
+							-//if skill.since != null
+							-//	span.since=`Since ${skill.since}`
+									
+							-// Any additional points to consider.
+							if skill.points != null
+								for point in skill.points
+									span.point=point

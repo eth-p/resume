@@ -58,7 +58,7 @@ main {
 	column-count: 2;
 	column-gap: 0;
 	
-	margin-top: $section-padding / 2;
+	margin: ($section-padding / 2) 0;
 	
 	@include layout("mobile") {
 		margin-top: $section-padding-mobile;
@@ -80,7 +80,7 @@ main {
 		}
 	}
 	
-	// A visualization of a spacer.
+	// The visualization line for spacers.
 	.spacer > .spacer-visualization {
 		margin: 0 1rem;
 		height: 1px;

@@ -11,15 +11,17 @@ $rating-height:             calc(1ch - 2px);            // Height of the rating 
 
 $summary-margin:            0.2rem;   // Margin between each item in the summary line.
 
-$project-header-margin:  0.4rem;   // Bottom margin between link and info.
-$project-header-padding: 0.2rem;   // Padding for the project header.
-
 /**
  * Section: Skills
  *
  * This section evaluates and displays your skills.
  */
 .section .skills {
+	h2 {
+		background: $project-header-background;
+		padding: $project-header-padding;
+	}
+	
 	.skill {
 		
 		// The skill summary section.
@@ -89,6 +91,11 @@ $project-header-padding: 0.2rem;   // Padding for the project header.
 			}
 			
 		}
+	}
+	
+	.skillset.minimized {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 100px);
 	}
 	
 }

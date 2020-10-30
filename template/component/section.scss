@@ -56,6 +56,16 @@ $paragraph-margin:          0.75em;   // Bottom margin for paragraphs.
 		}
 	}
 	
+	// Level 2 heading within a section.
+	h2 {
+		font-family: $emphasis-font;
+		font-weight: normal;
+		margin: 0 0 ($section-heading-margin / 2);
+		
+		font-size: unset;
+		text-decoration: underline;
+	}
+	
 	// A paragraph inside a section.
 	p, .paragraph {
 		margin-top: 0;
