@@ -41,18 +41,6 @@ mixin profile(info)
 							+profile-detail(assets.icon_address, info.address)(alt='Address')
 								span(property="address")=info.address
 					div.spacer
-				//
-				//-// Profile Occupation info.
-				//if info.occupation != null
-				//	- const occupation = info.occupation
-				//	div.occupation
-				//		div(property="occupation")
-				//			| #{occupation.title}
-				//
-				//		if occupation.employer != null
-				//			div(property="employer")
-				//				| at #{occupation.employer}
-				//	
 				block
 
 			-// Profile Photo

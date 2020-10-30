@@ -5,18 +5,23 @@
 @import "../util";
 @import "../theme";
 
-$photo-border-radius: 100%;    // How circular the profile photo is.
-$photo-size:          6rem;    // The size of the profile photo.
-$photo-size-mobile:   11rem;   // ^, but on mobile.
+$photo-border-radius: 100%;                                           // How circular the profile photo is.
+$photo-size:          6rem;                                           // Size of the profile photo.
+$photo-size-mobile:   11rem;                                          // ^, but on mobile.
 
-$profile-padding:               3rem;    // The padding around the entire profile.
-$profile-details-margin:        1rem;    // The margin between the profile summary and profile details.
-$profile-details-margin-mobile: 3.5rem;  // ^, but on mobile.
+$profile-padding:               3rem;                                 // Padding around the entire profile.
+$profile-details-margin:        1rem;                                 // Margins between the profile summary and details.
+$profile-details-margin-mobile: 3.5rem;                               // ^, but on mobile.
 
-$details-margins: calc(max(0.5rem, min(5vw, 2rem)));
+$details-margins-horizontal:      calc(max(0.5rem, min(5vw, 2rem)));  // Horizontal margins for details grid columns.
+$details-margins-vertical:        0.25rem;                            // ^, but for rows.
+$details-margins-vertical-mobile: 0.45rem;                            // ^, but for rows in mobile layout.
 
 /**
  * Profile Component
+ *
+ * This component is used to display a brief summary of the person whose resume is being styled.
+ * It will be treated as a banner and will cover the entire horizontal width of the page. 
  */
 .profile {
 	
@@ -24,7 +29,7 @@ $details-margins: calc(max(0.5rem, min(5vw, 2rem)));
 	background: $profile-background;
 	border-bottom: $profile-border 1px solid;
 	
-	// Layout.
+	// Layout options.
 	.spacer {
 		flex: 1 0 auto;
 	}
@@ -81,18 +86,31 @@ $details-margins: calc(max(0.5rem, min(5vw, 2rem)));
 
 				// Every second child is the text after an icon.
 				// This should be right-padded to emulate grid spacing.
-				:nth-child(2) {
-					padding-right: $details-margins;
+				> :nth-child(2) {
+					padding-right: $details-margins-horizontal;
 
 					@include layout("mobile") {
 						padding-right: 0;
+					}
+				}
+
+				// Every child.
+				// This can add spacing between grid rows.
+				> * {
+					padding-bottom: $details-margins-vertical;
+
+					@include layout("mobile") {
+						padding-bottom: $details-margins-vertical-mobile;
 					}
 				}
 			}
 		}
 	}
 	
-	// Photo
+	// The profile photo.
+	//
+	// Desktop: Displayed on the right.
+	// Mobile:  Displayed at the top.
 	[property="image"] {
 		width: $photo-size;
 		height: $photo-size;
@@ -106,8 +124,12 @@ $details-margins: calc(max(0.5rem, min(5vw, 2rem)));
 		}
 	}
 
-	// Name
+	// The person's name.
+	//
+	// Desktop: Displayed to the left of the photo.
+	// Mobile:  Displayed under the photo.
 	[property="name"] {
+		font-family: $emphasis-font;
 		font-size: 2rem;
 		font-weight: bold;
 	}

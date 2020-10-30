@@ -1,9 +1,9 @@
 -// Copyright (C) 2020 eth-p
 
 mixin image(asset)
-	if asset === undefined
+	if asset == null
 		span
-			| #{attributes.alt}:&nbsp;
+			| #{attributes.alt == null ? "\u26A0" : attributes.alt}&nbsp;
 	
 	else if typeof asset === 'string'
 		img(src=asset)&attributes(attributes)

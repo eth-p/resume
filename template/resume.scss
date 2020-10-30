@@ -12,12 +12,8 @@ html {
 	
 	font-family: 'Roboto', 'Helvetica Neue', 'arial', sans-serif;
 	color: $text-regular-color;
-
-	@include layout("print") {
-		//margin: 1in;
-	}
+	background: $page-background;
 }
-
 
 // Make SVG icons consume the same amount of space as a character.
 .icon > svg {

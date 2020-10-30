@@ -3,8 +3,12 @@
 // All rights reserved. Not to be copied!
 // ---------------------------------------------------------------------------------------------------------------------
 
-$profile-background: #dcdcdc;
-$profile-border: #bbb;
+$page-background: #f3f3f3;                     // The background color for the entire page.
+
+$profile-background: #fff;                     // Background color for the profile section.
+$profile-border: #bbb;                         // Border color for the profile section. 
+
+$emphasis-font: 'Geneva', serif;
 
 $text-regular-color: rgba(0, 0, 0, 0.87);
 $text-light-color: rgba(0, 0, 0, 0.5);
