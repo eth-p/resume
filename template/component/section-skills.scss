@@ -43,7 +43,7 @@ $minimized-skill-margin:    0.5rem;   // Margin between skills in a minimized sk
 			color: $text-light-color;
 			font-size: 0.8rem;
 			
-			> *:not(:last-child)::after {
+			> *:not(:first-child)::before {
 				content: '\00a0\2022\00a0';
 			}
 		}
@@ -60,7 +60,12 @@ $minimized-skill-margin:    0.5rem;   // Margin between skills in a minimized sk
 			font-family: $emphasis-font;
 			margin-right: $summary-margin;
 		}
-
+		
+		// The skill rating evaluation text.
+		.rating-text {
+			color: $text-halfway-color;
+		}
+		
 		// The skill rating.
 		.rating {
 			

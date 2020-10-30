@@ -52,7 +52,19 @@ div.skills
 							-// How long you've been doing the skill for.
 							-//if skill.since != null
 							-//	span.since=`Since ${skill.since}`
-									
+							
+							-// The text rating of the skill.
+							if skill.rating != null && minimized !== true && skill.hide-rating !== true
+								span.point.rating-text
+									if skill.rating > 4.5
+										span.r-expert Expert
+									else if skill.rating > 3.75
+										span.r-advanced Advanced
+									else if skill.rating > 2.5
+										span.r-intermediate Intermediate
+									else
+										span.r-beginner Beginner
+							
 							-// Any additional points to consider.
 							if skill.points != null
 								for point in skill.points
