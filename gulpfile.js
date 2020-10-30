@@ -71,9 +71,8 @@ async function get_variables() {
  * Gets the assets that can be embedded in the page.
  */
 async function get_assets() {
-	const filenames = await fse.readdir(ASSET_DIR);
+	const filenames = (await fse.readdir(ASSET_DIR)).filter(file => !file.startsWith('.'));
 	const filedata = filenames
-		.filter(file => !file.startsWith('.'))
 		.map(file => fse.readFile(path.join(ASSET_DIR, file)))
 
 	return Object.fromEntries(
