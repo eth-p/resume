@@ -28,7 +28,8 @@ div.skills
 						
 							-// The skill icon.
 							div.icon
-								+image(skill.icon)(alt=skill.name).icon
+								if skill.icon != null
+									+image(skill.icon)(alt=skill.name).icon
 							
 							-// The skill name.
 							div.name=skill.name
