@@ -1,11 +1,51 @@
 ---
 sort: 10
-test: ing
+icon: asset:icon_projects
+name: Projects
 ---
 -// Copyright (C) 2020 eth-p
 include ../template/component/image
 
-div.skills
-	for skill in me.skills
-		+image(assets[`icon_${skill.icon}`])
-		span=skill.name
+for project in me.projects
+	div.project.paragraph
+		div.project-header
+			div.project-header-description
+				
+				div
+					
+					-// The project name.
+						if project.name != null
+							span.name=project.name
+							| &nbsp;
+			
+					-// Years spent at the institution.
+						if project.date != null
+							- const from = (typeof project !== 'object') || project.date.from || project.date || null
+							- const to = (typeof project !== 'object') || project.date.to || null
+				
+									if from != null
+										span.date
+											span.date-from=from
+											if to != null
+												span.range &ndash;
+												span.date-to=to
+	
+				-// Project link.
+				if project.href != null
+					div.link
+						a(href=project.href)=project.href
+
+			-// Project tech.
+			if project.tech != null && project['tech-hidden'] !== true
+				div.project-tech
+					for tech in project.tech
+						- const icon = `tech_${tech.toLowerCase().replace(/[^a-z0-9]{1,}/g, '_')}`
+									if project['tech-icon'] !== false && assets[icon] != null
+										+image(assets[icon])(alt=tech, title=tech).tech.icon
+									else
+										div.tech=tech
+
+		-// Project info.
+		if project.info != null
+			div.info=project.info
+

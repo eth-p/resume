@@ -1,0 +1,67 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// eth-p/resume | Copyright (C) 2020 eth-p
+// All rights reserved. Not to be copied!
+// ---------------------------------------------------------------------------------------------------------------------
+@import "../util";
+@import "../theme";
+
+$tech-margin:            0.2rem;   // Right margin between tech icons and edge of project header.
+$project-header-margin:  0.4rem;   // Bottom margin between link and info.
+$project-header-padding: 0.2rem;   // Padding for the project header.
+
+/**
+ * Section: Projects
+ *
+ * This section displays notable projects that have been completed throughout the years.
+ */
+.section .project {
+
+
+	// A flexbox that keeps the project tech to the right of the project name and link. 
+	.project-header {
+		background: $project-header-background;
+		padding: $project-header-padding;
+		margin-bottom: $project-header-margin;
+
+		display: flex;
+		align-items: center;
+	}
+
+	.project-header-description {
+		flex: 1 0 auto;
+	}
+	
+	.project-tech {
+		display: flex;
+		
+		&:not(:last-child) {
+			margin-right: $tech-margin;
+		}
+	}
+	
+	// The project name.
+	.name {
+		font-family: $emphasis-font;
+		font-weight: bold;
+	}
+	
+	// The project date(s).
+	.date {
+		color: $text-light-color;
+	}
+	
+	// A technology used in the project.
+	.tech {
+		margin-right: $tech-margin;
+	}
+	
+	// Additional info about the project.
+	.info {
+	}
+
+	// A link to the project.
+	.link {
+		font-size: 0.9rem;
+	}
+	
+}
