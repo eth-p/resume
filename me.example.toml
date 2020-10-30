@@ -1,0 +1,30 @@
+name = "Ash's Pikachu"
+photo = "https://i.imgur.com/sohWhy9.jpg"
+
+email = "piik@you.uwu"
+phone = "+1 PIK ACH UUUU"
+birthday = '2018-06-01'
+address = 'Somewhere in Kanto'
+
+[about]
+1 = [
+    "Pika pi?",
+    "Pika! Pika pika!",
+]
+2 = "Piiiiiiika..."
+
+[occupation]
+title = "A Beloved Pet"
+employer = "Ash Ketchum"
+
+[links.github]
+icon = "http://cdn.onlinewebfonts.com/svg/download_174253.svg"
+name = "Species"
+text = "Pikachu"
+href = "https://en.wikipedia.org/wiki/Pikachu"
+
+
+[[skills]]
+icon = "web_design"
+name = "Web Design"
+points = ['HTML', 'CSS']

@@ -1,7 +1,12 @@
 ---
 sort: 1
 test: ing
+name: Skills
 ---
+-// Copyright (C) 2020 eth-p
+include ../template/component/image
 
-div
-	span Skill name here. #{metadata.test}
+div.skills
+	for skill in me.skills
+		+image(assets[`icon_${skill.icon}`])
+		span=skill.name

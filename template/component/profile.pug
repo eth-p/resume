@@ -40,6 +40,14 @@ mixin profile(info)
 						if info.address != null
 							+profile-detail(assets.icon_address, info.address)(alt='Address')
 								span(property="address")=info.address
+						
+						for entry in Object.entries(info.links) || []
+							- const link = entry[1]
+							- const name = link.name == null ? entry[0] : link.name
+
+							+profile-detail(link.icon)(alt=name)
+								a(href=link.href)=(link.text == null ? link.href : link.text)
+						
 					div.spacer
 				block
 

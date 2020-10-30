@@ -55,7 +55,9 @@ function get_resume_styles() {
  * Or phone numbers.
  */
 async function get_variables() {
-	if (!await fse.pathExists(VARIABLE_FILE)) return {};
+	if (!await fse.pathExists(VARIABLE_FILE)) {
+		return toml.parse(await fse.readFile(path.join(__dirname, 'me.example.toml'), 'utf8'));
+	}
 
 	return {
 		name: 'eth-p',
