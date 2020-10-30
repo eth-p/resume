@@ -17,7 +17,8 @@ const gulp_files_to_var = require('../gulp/gulp-files-to-var');
 class Section {
 
 	constructor(file) {
-		this.name = file.data?.metadata?.name ??  path.basename(file.relative, path.extname(file.relative));
+		this.id = path.basename(file.relative, path.extname(file.relative));
+		this.name = file.data?.metadata?.name ?? this.id;
 		this.metadata = file?.data?.metadata ?? {};
 		this.contents = file.contents.toString();
 	}

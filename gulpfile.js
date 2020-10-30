@@ -31,9 +31,9 @@ const inject_vars = require('./buildscripts/pipeline/inject-variables');
  * A partial pipeline that compiles Pug templates with optional YAML front-matter.
  * @returns {Transform}
  */
-function get_resume_sections() {
+function get_resume_sections(options) {
 	return gulp.src([`${SOURCE_DIR}/**/*.{pug,html}`], {passthrough: true, cwd: __dirname})
-		.pipe(compile_templates())
+		.pipe(compile_templates(options))
 }
 
 /**
@@ -56,9 +56,12 @@ function get_resume_styles() {
 async function get_variables() {
 	if (!await fse.pathExists(VARIABLE_FILE)) return {};
 	
-	return toml.parse(
-		await fse.readFile(VARIABLE_FILE, 'utf8')
-	);
+	return {
+		name: 'eth-p',
+		contact: [],
+		
+		...toml.parse(await fse.readFile(VARIABLE_FILE, 'utf8'))
+	};
 }
 
 
@@ -66,8 +69,12 @@ async function get_variables() {
 
 gulp.task('resume', async () => {
 	const me = await get_variables();
-	return get_resume_sections()   // Compile the sections.
-		.pipe(get_resume_styles()) // Compile the styles.
+	const extras = {
+		me
+	};
+	
+	return get_resume_sections({extras})   // Compile the sections.
+		.pipe(get_resume_styles())                // Compile the styles.
 		
 		// Load the full resume page and convert the sections to variables.  
 		.pipe(gulp.src([`${TEMPLATE_DIR}/resume.pug`], {passthrough: true}))

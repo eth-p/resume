@@ -1,0 +1,9 @@
+# Build
+/build
+node_modules
+
+# System
+.DS_Store
+
+# Private
+me.toml
