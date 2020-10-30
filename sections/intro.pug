@@ -4,5 +4,5 @@ name: About Me
 ---
 -// Copyright (C) 2020 eth-p
 
-p
-	| Some info about me should go here.
+for entry in me.about
+	p=(entry instanceof Array ? entry.join(' ') : entry)
