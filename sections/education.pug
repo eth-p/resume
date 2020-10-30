@@ -1,9 +1,36 @@
 ---
 sort: 5
-test: ing
+icon: education
+name: Education
 ---
 -// Copyright (C) 2020 eth-p
 include ../template/component/image
 
-div.education
-	| Education goes here.
+for schooling in me.education
+	div.education.paragraph
+
+		div
+			-// The degree.
+			if schooling.degree != null
+				span.degree=schooling.degree
+				| &nbsp;
+			
+			-// Years spent at the institution.
+			if schooling.date != null
+				- const from = (typeof schooling !== 'object') || schooling.date.from || schooling.date || null
+				- const to   = (typeof schooling !== 'object') || schooling.date.to   || null
+				
+				if from != null
+					span.date
+						span.date-from=from
+						if to != null
+							span.range &ndash;
+							span.date-to=to
+
+		-// School info.
+		if schooling.school != null
+			div.school=schooling.school
+		
+		-// Additional info.
+		if schooling.info != null
+			div.info=schooling.info

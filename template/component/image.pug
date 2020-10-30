@@ -4,8 +4,8 @@ mixin image(asset)
 	- const data = (typeof asset === 'string' && asset.startsWith('asset:')) ? assets[asset.substring(6)] : asset;
 
 	if data == null
-		span
-			| #{attributes.alt == null ? "\u26A0" : attributes.alt}&nbsp;
+		span(title=attributes.alt)
+			| &#9888;
 	
 	else if typeof data === 'string'
 		img(src=data)&attributes(attributes)

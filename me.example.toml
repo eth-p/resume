@@ -1,3 +1,6 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# Profile
+# ----------------------------------------------------------------------------------------------------------------------
 name = "Ash's Pikachu"
 photo = "https://i.imgur.com/sohWhy9.jpg"
 
@@ -5,13 +8,6 @@ email = "piik@you.uwu"
 phone = "+1 PIK ACH UUUU"
 birthday = '2018-06-01'
 address = 'Somewhere in Kanto'
-
-[about]
-1 = [
-    "Pika pi?",
-    "Pika! Pika pika!",
-]
-2 = "Piiiiiiika..."
 
 [occupation]
 title = "A Beloved Pet"
@@ -23,7 +19,27 @@ name = "Species"
 text = "Pikachu"
 href = "https://en.wikipedia.org/wiki/Pikachu"
 
+[about]
+1 = "Piiiiiiika..."
+2 = [
+    "Pika pi?",
+    "Pika! Pika pika!",
+]
 
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Education
+# ----------------------------------------------------------------------------------------------------------------------
+[[education]]
+date   = {from = "1997", to = "2020"}
+school = "Professor Oak's Lab"
+degree = "Ash's Pokemon"
+info   = "Trained under Ash Ketchum to become the best Pikachu around."
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Skills
+# ----------------------------------------------------------------------------------------------------------------------
 [[skills]]
 icon = "web_design"
 name = "Web Design"
