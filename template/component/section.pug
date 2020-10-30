@@ -8,7 +8,7 @@ mixin section(section, options)
 			if !classes.includes('seamless')
 				h1
 					if section.metadata.icon != null
-						+image(section.metadata.icon).section-icon
+						+image(section.metadata.icon).section-icon.icon
 					
 					span=section.name
 			
