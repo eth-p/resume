@@ -18,4 +18,4 @@ mixin image(asset)
 			object(role="img" aria-label=attributes.alt)&attributes(attributes)
 				| !{data.contents.toString()}
 		else
-			img(src=`data:image/${data.type};base64,${data.contents.toString('base64')}`)&attributes(attributes)
+			img(src=`data:${data.type};base64,${data.contents.toString('base64')}`)&attributes(attributes)

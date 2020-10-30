@@ -16,6 +16,7 @@ const ASSET_DIR = `${__dirname}/images`;
 // =====================================================================================================================
 // Requires:
 const fse = require('fs-extra');
+const fetch = require('node-fetch');
 const path = require('path');
 const toml = require('toml');
 
@@ -27,6 +28,7 @@ const compile_styles = require('./buildscripts/pipeline/compile-styles');
 const inject_vars = require('./buildscripts/pipeline/inject-variables');
 
 // ---------------------------------------------------------------------------------------------------------------------
+const ASSET_CACHE = new Map();
 
 /**
  * A partial pipeline that compiles Pug templates with optional YAML front-matter.
@@ -89,6 +91,36 @@ async function get_assets() {
 	)
 }
 
+/**
+ * Downloads a specific asset to be inlined.
+ */
+async function download_asset(asset) {
+	if (ASSET_CACHE.has(asset)) return ASSET_CACHE.get(asset);
+	
+	const url = new URL(asset);
+	let blob = null;
+	switch (url.protocol) {
+		case 'https:':
+		case 'http:': {
+			blob = await fetch(url)
+				.then(res => res.blob());
+			break;
+		}
+		
+		default:
+			return asset;
+	}
+	
+	// Generate an asset that can be inlined.
+	const cached = {
+		type: path.extname(url.pathname).substring(1),
+		contents: Buffer.from(await blob.arrayBuffer())
+	};
+	
+	ASSET_CACHE.set(asset, cached);
+	return cached;
+}
+
 // ---------------------------------------------------------------------------------------------------------------------
 
 gulp.task('resume', async () => {
@@ -98,7 +130,9 @@ gulp.task('resume', async () => {
 		me: await promised_me,
 		assets: await promised_assets,
 	};
-
+	
+	if (extras.me.photo != null) extras.me.photo = await download_asset(extras.me.photo);
+	
 	return get_resume_sections({extras})   // Compile the sections.
 		.pipe(get_resume_styles())                // Compile the styles.
 

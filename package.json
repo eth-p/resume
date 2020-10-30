@@ -29,6 +29,7 @@
     "gulp-print": "^5.0.2",
     "gulp-sass": "^4.1.0",
     "multimatch": "^4.0.0",
+    "node-fetch": "^2.6.1",
     "through2": "^2.0.5",
     "toml": "^3.0.0"
   },

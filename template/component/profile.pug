@@ -54,5 +54,5 @@ mixin profile(info)
 			-// Profile Photo
 			div.spacer
 			if info.photo != null
-				img(property="image" alt=`${info.name}'s picture.` src=info.photo)
+				+image(info.photo)(property="image" alt=`${info.name}'s picture.`)
 
