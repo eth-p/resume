@@ -16,7 +16,7 @@ div.skills
 		- const minimized     = category_info?.minimized 
 		
 		div.paragraph
-			if category_info != null
+			if category_info != null && category_info.name != null
 				h2=category_info.name
 			
 			div.skillset&attributes({class: (minimized === true ? 'minimized' : null)})
