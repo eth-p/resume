@@ -1,16 +1,18 @@
 -// Copyright (C) 2020 eth-p
 
 mixin image(asset)
-	if asset == null
+	- const data = (typeof asset === 'string' && asset.startsWith('asset:')) ? assets[asset.substring(6)] : asset;
+
+	if data == null
 		span
 			| #{attributes.alt == null ? "\u26A0" : attributes.alt}&nbsp;
 	
-	else if typeof asset === 'string'
-		img(src=asset)&attributes(attributes)
+	else if typeof data === 'string'
+		img(src=data)&attributes(attributes)
 	
 	else
-		if asset.type === 'svg'
+		if data.type === 'svg'
 			object(role="img" aria-label=attributes.alt)&attributes(attributes)
-				| !{asset.contents.toString()}
+				| !{data.contents.toString()}
 		else
-			img(src=`data:image/${asset.type};base64,${asset.contents.toString('base64')}`)&attributes(attributes)
+			img(src=`data:image/${data.type};base64,${data.contents.toString('base64')}`)&attributes(attributes)
