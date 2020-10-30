@@ -10,6 +10,7 @@ $rating-width-mobile:       calc(50vw - 2rem);          // ^, but for mobile.
 $rating-height:             calc(1ch - 2px);            // Height of the rating bar.
 
 $summary-margin:            0.2rem;   // Margin between each item in the summary line.
+$minimized-skill-margin:    0.5rem;   // Margin between skills in a minimized skillset.
 
 /**
  * Section: Skills
@@ -29,6 +30,7 @@ $summary-margin:            0.2rem;   // Margin between each item in the summary
 		.skill-summary {
 			display: flex;
 			align-items: center;
+			position: relative;
 			
 			> .spacer {
 				flex: 1 0 auto;
@@ -95,8 +97,24 @@ $summary-margin:            0.2rem;   // Margin between each item in the summary
 	}
 	
 	.skillset.minimized {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, 100px);
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		//grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+		
+		.skill {
+			margin-right: $minimized-skill-margin;
+			white-space: nowrap;
+		}
+		
+		// A pseudo-element that displays a dot instead of an empty icon.
+		.skill-icon:empty::before {
+			content: '\25CB';
+
+			position: absolute;
+			top: 0;
+			left: 0.25rem;
+		}
 	}
 	
 }
