@@ -9,31 +9,13 @@ $info-margin: 0.4em;   // Top margin for the info paragraph.
 
 
 /**
- * Section: Experience
+ * Section: Intro
  *
- * This section displays work experience.
+ * This section contains an introductory paragraph.
  */
-.section .experience {
+.section .intro {
 	
-	// The job title.
-	.title {
-		font-family: $emphasis-font;
-		font-weight: bold;
-	}
-	
-	// The dates of employment.
-	.date {
-		color: $text-light-color;
-	}
-
-	// The employer name.
-	.employer {
-		font-style: italic;
-	}
-	
-	// Additional info about the job.
-	.info {
-		margin-top: $info-margin;
+	p {
 		font-size: 0.925rem;
 	}
 	
