@@ -50,7 +50,7 @@ mixin profile(info)
 						if info.birthday != null && info.github != null
 							+profile-github(info)
 						
-						for entry in Object.entries(info.links) || []
+						for entry in info.links == null ? [] : Object.entries(info.links)
 							- const link = entry[1]
 							- const name = link.name == null ? entry[0] : link.name
 
