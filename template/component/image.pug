@@ -15,7 +15,7 @@ mixin image(asset)
 	
 	else
 		if data.type === 'svg'
-			object(role="img" aria-label=attributes.alt)&attributes(attributes)
+			div(role="img" aria-label=attributes.alt)&attributes(attributes)
 				| !{data.contents.toString()}
 		else
 			img(src=`data:${data.type};base64,${data.contents.toString('base64')}`)&attributes(attributes)
