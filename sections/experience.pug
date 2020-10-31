@@ -33,4 +33,4 @@ for experience in (me.experience == null ? [] : me.experience)
 		
 		-// Additional info.
 		if experience.info != null
-			div.info=experience.info
+			div.info=(experience.info instanceof Array ? experience.info.join(' ') : experience.info)
