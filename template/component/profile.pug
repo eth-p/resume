@@ -6,6 +6,10 @@ mixin profile-detail(icon)
 		span.value&attributes(Object.assign(attributes, {title: attributes.alt, alt:null}))
 			block
 
+mixin profile-github(info)
+	+profile-detail(assets.icon_github)(alt='Github')
+		a(href=`https://github.com/${info.github}`)=info.github
+				
 mixin profile(info)
 	div.profile(vocab="http://schema.org/" typeof="Person")
 		div.contents
@@ -36,10 +40,15 @@ mixin profile(info)
 						if info.birthday != null
 							+profile-detail(assets.icon_birthday)(alt='Birthday')
 								span(property="birthDate")=info.birthday
+						else if info.github != null
+							+profile-github(info)
 						
 						if info.address != null
 							+profile-detail(assets.icon_address, info.address)(alt='Address')
 								span(property="address")=info.address
+
+						if info.birthday != null && info.github != null
+							+profile-github(info)
 						
 						for entry in Object.entries(info.links) || []
 							- const link = entry[1]
